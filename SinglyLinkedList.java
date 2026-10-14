@@ -114,6 +114,7 @@ public class SinglyLinkedList implements LinkedList{
             currentNode = currentNode.pointer;
         }
     }
+    //Mikhael
     @Override
     public Object get(int index) {
         // TODO digunakan untuk mengembalikan data pada index ke-i dimulai dari head. Head memiliki index 0
@@ -123,6 +124,7 @@ public class SinglyLinkedList implements LinkedList{
     public int indexOf(Object targetData) {
         // TODO digunakan mencari kemunculan pertama targetData pada linked list dan mengembalikan indeksnya. Indeks dari head adalah 0. Jika tidak ada targetData pada linked list, kembalikan nilai -1 
         return 0;
+    //almer
     }
     @Override
     public void printReverse() {
@@ -134,6 +136,7 @@ public class SinglyLinkedList implements LinkedList{
         // TODO digunakan untuk mencari dan menghapus node dengan data=targetData pada linked list serta mengembalikan nilai True jika berhasil, dan False jika targetData tidak ada di linkedList
         return false;
     }
+    //Michael
     @Override
     public Object[] toArray() {
         // TODO digunakan untuk mendapatkan keseluruhan data pada node-node di linked list dalam bentuk array. Data-data pada array disusun secara urut mulai dari head sampai dengan tail.
