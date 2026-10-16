@@ -114,7 +114,7 @@ public class SinglyLinkedList implements LinkedList{
             currentNode = currentNode.pointer;
         }
     }
-    //Mikhael
+    // Mikhael
     @Override
     public Object get(int index) {
         // TODO digunakan untuk mengembalikan data pada index ke-i dimulai dari head. Head memiliki index 0
@@ -141,19 +141,63 @@ public class SinglyLinkedList implements LinkedList{
             index++;
         }
         return -1;
-    //almer
     }
+    // Almer
     @Override
     public void printReverse() {
          // TODO digunakan untuk mencetak data pada linked list dengan urutan terbalik, dari tail ke head.
-        
+         Node prev = null;
+         Node currentNode = head;
+         Node next;
+         while (currentNode != null) {
+            next = currentNode.pointer;
+            currentNode.pointer = prev;
+            prev = currentNode;
+            currentNode = next;
+        }
+        currentNode = prev;
+        while (currentNode != null) {
+            System.out.print(currentNode.data);
+            if (currentNode.pointer != null) {
+                System.out.print(",");
+            }
+            currentNode = currentNode.pointer;
+        }
+        System.out.println();
+        currentNode = prev;
+        prev = null;
+        while (currentNode != null) {
+            next = currentNode.pointer;
+            currentNode.pointer = prev;
+            prev = currentNode;
+            currentNode = next;
+        }
     }
     @Override
     public boolean remove(Object targetData) {
         // TODO digunakan untuk mencari dan menghapus node dengan data=targetData pada linked list serta mengembalikan nilai True jika berhasil, dan False jika targetData tidak ada di linkedList
+        Node currentNode = head;
+        Node prev = null;
+        while (currentNode != null) {
+            if (java.util.Objects.equals(currentNode.data, targetData)) {
+                if (prev == null) {
+                    head = currentNode.pointer;
+                } else {
+                    prev.pointer = currentNode.pointer;
+                }
+                if (currentNode == tail) {
+                    tail = prev;
+                }
+                currentNode.pointer = null;
+                size--;
+                return true;
+            }
+            prev = currentNode;
+            currentNode = currentNode.pointer;
+        }
         return false;
     }
-    //Michael
+    // Michael
     @Override
     public Object[] toArray() {
         Object[] result = new Object[size];

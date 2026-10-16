@@ -119,7 +119,7 @@ public class DoublyLinkedList implements LinkedList{
             currentNode = currentNode.next;
         }
     }
-    //Michael
+    // Michael
     @Override
     public Object get(int index) {
         if (index < 0 || index >= size) {
@@ -142,15 +142,16 @@ public class DoublyLinkedList implements LinkedList{
         }
         return -1;
     }
-    //Mikhael
+    // Mikhael
     @Override
     public void printReverse() {
         // TODO digunakan untuk mencetak data pada linked list dengan urutan terbalik, dari tail ke head.
         Node2P currentNode = tail;
         while (currentNode != null) {
-            System.out.println(currentNode.data);
+            System.out.print(currentNode.data);
             currentNode = currentNode.prev;
         }
+        System.out.println();
     }
     @Override
     public boolean remove(Object targetData) {
@@ -179,10 +180,16 @@ public class DoublyLinkedList implements LinkedList{
         }
         return false;
     }
-    //Almer
+    // Almer
     @Override
     public Object[] toArray() {
         // TODO digunakan untuk mendapatkan keseluruhan data pada node-node di linked list dalam bentuk array. Data-data pada array disusun secara urut mulai dari head sampai dengan tail.
-        return null;
+        Object[] arr = new Object[size];
+        Node2P currentNode = head;
+        for (int i = 0; i < size; i++) {
+            arr[i] = currentNode.data;
+            currentNode = currentNode.next;
+        }
+        return arr;
     }
 }
