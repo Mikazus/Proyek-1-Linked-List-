@@ -118,7 +118,15 @@ public class SinglyLinkedList implements LinkedList{
     @Override
     public Object get(int index) {
         // TODO digunakan untuk mengembalikan data pada index ke-i dimulai dari head. Head memiliki index 0
-        return null;
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", size: " + size);
+        }
+
+        Node currentNode = head;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.pointer;
+        }
+        return currentNode.data;
     }
     @Override
     public int indexOf(Object targetData) {
@@ -192,7 +200,12 @@ public class SinglyLinkedList implements LinkedList{
     // Michael
     @Override
     public Object[] toArray() {
-        // TODO digunakan untuk mendapatkan keseluruhan data pada node-node di linked list dalam bentuk array. Data-data pada array disusun secara urut mulai dari head sampai dengan tail.
-        return null;
+        Object[] result = new Object[size];
+        Node currentNode = head;
+        for (int i = 0; i < size; i++) {
+            result[i] = currentNode.data;
+            currentNode = currentNode.pointer;
+        }
+        return result;
     }
 }

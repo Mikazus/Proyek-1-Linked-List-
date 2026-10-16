@@ -122,13 +122,25 @@ public class DoublyLinkedList implements LinkedList{
     // Michael
     @Override
     public Object get(int index) {
-        // TODO digunakan untuk mengembalikan data pada index ke-i dimulai dari head. Head memiliki index 0
-        return null;
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        Node2P currentNode = head;
+        for (int i = 0; i < index; i++) {
+            currentNode = currentNode.next;
+        }
+        return currentNode.data;
     }
     @Override
     public int indexOf(Object targetData) {
-        // TODO digunakan mencari kemunculan pertama targetData pada linked list dan mengembalikan indeksnya. Indeks dari head adalah 0. Jika tidak ada targetData pada linked list, kembalikan nilai -1 
-        return 0;
+        Node2P currentNode = head;
+        for (int i = 0; i < size; i++) {
+            if (java.util.Objects.equals(currentNode.data, targetData)) {
+                return i;
+            }
+            currentNode = currentNode.next;
+        }
+        return -1;
     }
     // Mikhael
     @Override
@@ -144,6 +156,28 @@ public class DoublyLinkedList implements LinkedList{
     @Override
     public boolean remove(Object targetData) {
         // TODO digunakan untuk mencari dan menghapus node dengan data=targetData pada linked list serta mengembalikan nilai True jika berhasil, dan False jika targetData tidak ada di linkedList
+        Node2P currentNode = head;
+        while (currentNode != null) {
+            if (java.util.Objects.equals(currentNode.data, targetData)) {
+                if (currentNode.prev == null) {
+                    head = currentNode.next;
+                } else {
+                    currentNode.prev.next = currentNode.next;
+                }
+
+                if (currentNode.next == null) {
+                    tail = currentNode.prev;
+                } else {
+                    currentNode.next.prev = currentNode.prev;
+                }
+
+                currentNode.prev = null;
+                currentNode.next = null;
+                size--;
+                return true;
+            }
+            currentNode = currentNode.next;
+        }
         return false;
     }
     // Almer
